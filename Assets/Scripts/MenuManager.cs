@@ -54,17 +54,14 @@ public class MenuManager : MonoBehaviour
             }
             Profile.SetActive(false);
         }
-        if(_String == "Main")
+    }
+    public void ChangeScene(string _sceneName)
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+        if (sceneName != _sceneName)
         {
-            SceneManager.LoadScene("Main");
-        }
-        if (_String == "Shop")
-        {
-            SceneManager.LoadScene("Shop");
-        }
-        if (_String == "Cards")
-        {
-            SceneManager.LoadScene("Cards");
+            SceneManager.LoadScene(_sceneName);
         }
     }
     public void Quit()
