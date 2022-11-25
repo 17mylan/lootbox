@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Statistics : MonoBehaviour
 {
@@ -15,9 +16,7 @@ public class Statistics : MonoBehaviour
     {
         goldScoreText.text = PlayerPrefs.GetInt("gold", gold).ToString();
         gold = PlayerPrefs.GetInt("gold", gold);
-
-        allGoldScoreText.text = PlayerPrefs.GetInt("allGold", allGold).ToString();
-        allGold = PlayerPrefs.GetInt("allGold", allGold);
+        CheckStats();
     }
     public void ButtonClick(string _String)
     {
@@ -26,6 +25,17 @@ public class Statistics : MonoBehaviour
             gold++;
             PlayerPrefs.SetInt("gold", gold);
             goldScoreText.text = PlayerPrefs.GetInt("gold", gold).ToString();
+            CheckStats();
+        }
+    }
+    public void CheckStats()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+        if (sceneName == "Main")
+        {
+            allGoldScoreText.text = PlayerPrefs.GetInt("allGold", allGold).ToString();
+            allGold = PlayerPrefs.GetInt("allGold", allGold);
 
             allGold++;
             PlayerPrefs.SetInt("allGold", allGold);
