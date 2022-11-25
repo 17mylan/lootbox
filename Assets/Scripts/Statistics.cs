@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class Statistics : MonoBehaviour
 {
-    private int gold;
+    public int gold;
     public Text goldScoreText;
 
-    private int allGold;
+    public int allGold;
     public Text allGoldScoreText;
 
     public void Start()
@@ -26,6 +26,39 @@ public class Statistics : MonoBehaviour
             PlayerPrefs.SetInt("gold", gold);
             goldScoreText.text = PlayerPrefs.GetInt("gold", gold).ToString();
             CheckStats();
+        }
+        if(_String == "BuyChestCommon")
+        {
+            if(PlayerPrefs.GetInt("gold", gold) >= 10)
+            {
+                gold = (PlayerPrefs.GetInt("gold", gold)) - 10;
+                PlayerPrefs.SetInt("gold", gold);
+                goldScoreText.text = PlayerPrefs.GetInt("gold", gold).ToString();
+                // Mettre scene du coffre
+                // ajouter + 1 aux stats des coffres
+            }
+        }
+        if(_String == "BuyChestRare")
+        {
+            if(PlayerPrefs.GetInt("gold", gold) >= 50)
+            {
+                gold = (PlayerPrefs.GetInt("gold", gold)) - 50;
+                PlayerPrefs.SetInt("gold", gold);
+                goldScoreText.text = PlayerPrefs.GetInt("gold", gold).ToString();
+                // Mettre scene du coffre
+                // ajouter + 1 aux stats des coffres
+            }
+        }
+        if(_String == "BuyChestEpic")
+        {
+            if(PlayerPrefs.GetInt("gold", gold) >= 100)
+            {
+                gold = (PlayerPrefs.GetInt("gold", gold)) - 100;
+                PlayerPrefs.SetInt("gold", gold);
+                goldScoreText.text = PlayerPrefs.GetInt("gold", gold).ToString();
+                // Mettre scene du coffre
+                // ajouter + 1 aux stats des coffres
+            }
         }
     }
     public void CheckStats()

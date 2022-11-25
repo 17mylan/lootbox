@@ -7,36 +7,52 @@ public class MenuManager : MonoBehaviour
 {
     public GameObject Options;
     public GameObject Profile;
+    public GameObject Shop;
+    public GameObject CommonChestPopUp;
+    public GameObject RareChestPopUp;
+    public GameObject EpicChestPopUp;
 
     public GameObject GoldButton;
 
+    Statistics statistics;
+
+    public void Start()
+    {
+    }
     public void ButtonClick(string _String)
     {
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
         if (_String == "Options")
         {
-            Scene currentScene = SceneManager.GetActiveScene();
-            string sceneName = currentScene.name;
             if (sceneName == "Main")
             {
                 Profile.SetActive(false);
                 GoldButton.SetActive(false);
             }
+            if(sceneName == "Shop")
+            {
+                Shop.SetActive(false);
+                CommonChestPopUp.SetActive(false);
+                RareChestPopUp.SetActive(false);
+                EpicChestPopUp.SetActive(false);
+            }
             Options.SetActive(true);
         }
         if (_String == "CloseOptions")
         {
-            Scene currentScene = SceneManager.GetActiveScene();
-            string sceneName = currentScene.name;
             if (sceneName == "Main")
             {
                 GoldButton.SetActive(true);
+            }
+            if(sceneName == "Shop")
+            {
+                Shop.SetActive(true);
             }
             Options.SetActive(false);
         }
         if (_String == "Profile")
         {
-            Scene currentScene = SceneManager.GetActiveScene();
-            string sceneName = currentScene.name;
             if (sceneName == "Main")
             {
                 Profile.SetActive(true);
@@ -46,25 +62,42 @@ public class MenuManager : MonoBehaviour
         }
         if (_String == "CloseProfile")
         {
-            Scene currentScene = SceneManager.GetActiveScene();
-            string sceneName = currentScene.name;
             if (sceneName == "Main")
             {
                 GoldButton.SetActive(true);
             }
             Profile.SetActive(false);
         }
-        if(_String == "Main")
+        if(_String == "CancelShop")
         {
-            SceneManager.LoadScene("Main");
+            Shop.SetActive(true);
+            CommonChestPopUp.SetActive(false);
+            RareChestPopUp.SetActive(false);
+            EpicChestPopUp.SetActive(false);
         }
-        if (_String == "Shop")
+        if(_String == "CommonChestPopUp")
         {
-            SceneManager.LoadScene("Shop");
+            Shop.SetActive(false);
+            CommonChestPopUp.SetActive(true);
         }
-        if (_String == "Cards")
+        if(_String == "RareChestPopUp")
         {
-            SceneManager.LoadScene("Cards");
+            Shop.SetActive(false);
+            RareChestPopUp.SetActive(true);
+        }
+        if(_String == "EpicChestPopUp")
+        {
+            Shop.SetActive(false);
+            EpicChestPopUp.SetActive(true);
+        }
+    }
+    public void ChangeScene(string _sceneName)
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+        if (sceneName != _sceneName)
+        {
+            SceneManager.LoadScene(_sceneName);
         }
     }
     public void Quit()
