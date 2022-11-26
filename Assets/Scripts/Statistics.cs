@@ -6,20 +6,44 @@ using UnityEngine.SceneManagement;
 
 public class Statistics : MonoBehaviour
 {
+    // ___________________________________________
+    // |                                          |
+    // |                VARIABLES                 |
+    // |__________________________________________|
     public int gold;
     public Text goldScoreText;
-
     public int allGold;
     public Text allGoldScoreText;
-
+    public int commonChestCounter;
+    public Text commonChestCounterText;
+    public int rareChestCounter;
+    public Text rareChestCounterText;
+    public int epicChestCounter;
+    public Text epicChestCounterText;
+    
+    // ___________________________________________
+    // |                                          |
+    // |              MONOBEHAVIOR                |
+    // |__________________________________________|
     public void Start()
     {
         goldScoreText.text = PlayerPrefs.GetInt("gold", gold).ToString();
         gold = PlayerPrefs.GetInt("gold", gold);
         CheckStats();
     }
+
+    // ___________________________________________
+    // |                                          |
+    // |            PUBLIC FONCTION               |
+    // |__________________________________________|
     public void ButtonClick(string _String)
     {
+        if(_String == "MaxGold")
+        {
+            gold = 9999;
+            PlayerPrefs.SetInt("gold", 9999);
+            goldScoreText.text = PlayerPrefs.GetInt("gold", gold).ToString();
+        }
         if(_String == "GoldButton")
         {
             gold++;
@@ -34,8 +58,8 @@ public class Statistics : MonoBehaviour
                 gold = (PlayerPrefs.GetInt("gold", gold)) - 10;
                 PlayerPrefs.SetInt("gold", gold);
                 goldScoreText.text = PlayerPrefs.GetInt("gold", gold).ToString();
-                // Mettre scene du coffre
-                // ajouter + 1 aux stats des coffres
+                commonChestCounter = PlayerPrefs.GetInt("CommonChestCounter", commonChestCounter) + 1;
+                PlayerPrefs.SetInt("CommonChestCounter", commonChestCounter);
             }
         }
         if(_String == "BuyChestRare")
@@ -45,8 +69,8 @@ public class Statistics : MonoBehaviour
                 gold = (PlayerPrefs.GetInt("gold", gold)) - 50;
                 PlayerPrefs.SetInt("gold", gold);
                 goldScoreText.text = PlayerPrefs.GetInt("gold", gold).ToString();
-                // Mettre scene du coffre
-                // ajouter + 1 aux stats des coffres
+                rareChestCounter = PlayerPrefs.GetInt("RareChestCounter", rareChestCounter) + 1;
+                PlayerPrefs.SetInt("RareChestCounter", rareChestCounter);
             }
         }
         if(_String == "BuyChestEpic")
@@ -56,8 +80,8 @@ public class Statistics : MonoBehaviour
                 gold = (PlayerPrefs.GetInt("gold", gold)) - 100;
                 PlayerPrefs.SetInt("gold", gold);
                 goldScoreText.text = PlayerPrefs.GetInt("gold", gold).ToString();
-                // Mettre scene du coffre
-                // ajouter + 1 aux stats des coffres
+                epicChestCounter = PlayerPrefs.GetInt("EpicChestCounter", epicChestCounter) + 1;
+                PlayerPrefs.SetInt("EpicChestCounter", epicChestCounter);
             }
         }
     }
@@ -69,10 +93,15 @@ public class Statistics : MonoBehaviour
         {
             allGoldScoreText.text = PlayerPrefs.GetInt("allGold", allGold).ToString();
             allGold = PlayerPrefs.GetInt("allGold", allGold);
-
             allGold++;
             PlayerPrefs.SetInt("allGold", allGold);
             allGoldScoreText.text = PlayerPrefs.GetInt("allGold", allGold).ToString();
+            commonChestCounter = PlayerPrefs.GetInt("CommonChestCounter", commonChestCounter);
+            commonChestCounterText.text = PlayerPrefs.GetInt("CommonChestCounter", commonChestCounter).ToString();
+            rareChestCounter = PlayerPrefs.GetInt("RareChestCounter", rareChestCounter);
+            rareChestCounterText.text = PlayerPrefs.GetInt("RareChestCounter", rareChestCounter).ToString();
+            epicChestCounter = PlayerPrefs.GetInt("EpicChestCounter", epicChestCounter);
+            epicChestCounterText.text = PlayerPrefs.GetInt("EpicChestCounter", epicChestCounter).ToString();
         }
     }
 }

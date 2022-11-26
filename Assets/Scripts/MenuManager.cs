@@ -1,23 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    // ___________________________________________
+    // |                                          |
+    // |                VARIABLES                 |
+    // |__________________________________________|
     public GameObject Options;
     public GameObject Profile;
     public GameObject Shop;
     public GameObject CommonChestPopUp;
     public GameObject RareChestPopUp;
     public GameObject EpicChestPopUp;
-
     public GameObject GoldButton;
-
+    public Text playername;
+    public InputField display;
     Statistics statistics;
 
+    // ___________________________________________
+    // |                                          |
+    // |              MONOBEHAVIOR                |
+    // |__________________________________________|
     public void Start()
     {
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+        if (sceneName == "Main")
+        {
+            playername.text = PlayerPrefs.GetString("playername");
+        }
+    }
+
+    // ___________________________________________
+    // |                                          |
+    // |            PUBLIC FONCTION               |
+    // |__________________________________________|
+    public void Create()
+    {
+        playername.text = display.text;
+        PlayerPrefs.SetString("playername", playername.text);
     }
     public void ButtonClick(string _String)
     {
