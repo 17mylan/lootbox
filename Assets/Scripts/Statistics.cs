@@ -20,7 +20,9 @@ public class Statistics : MonoBehaviour
     public Text rareChestCounterText;
     public int epicChestCounter;
     public Text epicChestCounterText;
-    
+    public ParticleSystem particleSys;
+    public GameObject button;
+
     // ___________________________________________
     // |                                          |
     // |              MONOBEHAVIOR                |
@@ -36,6 +38,12 @@ public class Statistics : MonoBehaviour
     // |                                          |
     // |            PUBLIC FONCTION               |
     // |__________________________________________|
+    IEnumerator ButtonScale()
+    {
+        button.transform.localScale = new Vector3(0.8f,0.8f,0.8f);
+        yield return new WaitForSeconds(0.1f);
+        button.transform.localScale = new Vector3(1,1,1);
+    }
     public void ButtonClick(string _String)
     {
         if(_String == "MaxGold")
@@ -46,6 +54,8 @@ public class Statistics : MonoBehaviour
         }
         if(_String == "GoldButton")
         {
+            particleSys.Play();
+            StartCoroutine("ButtonScale");
             gold++;
             PlayerPrefs.SetInt("gold", gold);
             goldScoreText.text = PlayerPrefs.GetInt("gold", gold).ToString();
@@ -91,6 +101,7 @@ public class Statistics : MonoBehaviour
         string sceneName = currentScene.name;
         if (sceneName == "Main")
         {
+            particleSys = GameObject.Find("Particle System").GetComponent<ParticleSystem>();
             allGoldScoreText.text = PlayerPrefs.GetInt("allGold", allGold).ToString();
             allGold = PlayerPrefs.GetInt("allGold", allGold);
             allGold++;
