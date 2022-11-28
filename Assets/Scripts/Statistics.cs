@@ -22,7 +22,6 @@ public class Statistics : MonoBehaviour
     public Text epicChestCounterText;
     public ParticleSystem particleSys;
     public GameObject button;
-
     // ___________________________________________
     // |                                          |
     // |              MONOBEHAVIOR                |
