@@ -21,7 +21,13 @@ public class Statistics : MonoBehaviour
     public int epicChestCounter;
     public Text epicChestCounterText;
     public ParticleSystem particleSys;
+    public ParticleSystem particleSysNewChest;
+    public ParticleSystem particleSysNewChestRare;
     public GameObject button;
+    public float randomValue;
+    public Sprite nativeChest;
+    public Sprite newChest;
+    public Sprite newChestRare;
     // ___________________________________________
     // |                                          |
     // |              MONOBEHAVIOR                |
@@ -43,6 +49,24 @@ public class Statistics : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         button.transform.localScale = new Vector3(1,1,1);
     }
+
+
+    // Cheat code Dev
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Y))
+        {
+            button.GetComponent<Image>().sprite = nativeChest;
+        }
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            button.GetComponent<Image>().sprite = newChest;
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            button.GetComponent<Image>().sprite = newChestRare;
+        }
+    }
     public void ButtonClick(string _String)
     {
         if(_String == "MaxGold")
@@ -53,9 +77,33 @@ public class Statistics : MonoBehaviour
         }
         if(_String == "GoldButton")
         {
-            particleSys.Play();
+            if (button.GetComponent<Image>().sprite == newChest)
+            {
+                button.GetComponent<Image>().sprite = nativeChest;
+                gold = gold + 10;
+                allGold = PlayerPrefs.GetInt("allGold", allGold);
+                allGold = allGold + 10;
+                PlayerPrefs.SetInt("allGold", allGold);
+                particleSysNewChest.Play();
+            }
+            else if (button.GetComponent<Image>().sprite == newChestRare)
+            {
+                button.GetComponent<Image>().sprite = nativeChest;
+                gold = gold + 75;
+                allGold = PlayerPrefs.GetInt("allGold", allGold);
+                allGold = allGold + 75;
+                PlayerPrefs.SetInt("allGold", allGold);
+                particleSysNewChestRare.Play();
+            }
+            else
+            {
+                gold++;
+                allGold = PlayerPrefs.GetInt("allGold", allGold);
+                allGold++;
+                PlayerPrefs.SetInt("allGold", allGold);
+                particleSys.Play();
+            }
             StartCoroutine("ButtonScale");
-            gold++;
             PlayerPrefs.SetInt("gold", gold);
             goldScoreText.text = PlayerPrefs.GetInt("gold", gold).ToString();
             CheckStats();
@@ -100,11 +148,7 @@ public class Statistics : MonoBehaviour
         string sceneName = currentScene.name;
         if (sceneName == "Main")
         {
-            particleSys = GameObject.Find("Particle System").GetComponent<ParticleSystem>();
-            allGoldScoreText.text = PlayerPrefs.GetInt("allGold", allGold).ToString();
             allGold = PlayerPrefs.GetInt("allGold", allGold);
-            allGold++;
-            PlayerPrefs.SetInt("allGold", allGold);
             allGoldScoreText.text = PlayerPrefs.GetInt("allGold", allGold).ToString();
             commonChestCounter = PlayerPrefs.GetInt("CommonChestCounter", commonChestCounter);
             commonChestCounterText.text = PlayerPrefs.GetInt("CommonChestCounter", commonChestCounter).ToString();
@@ -112,6 +156,15 @@ public class Statistics : MonoBehaviour
             rareChestCounterText.text = PlayerPrefs.GetInt("RareChestCounter", rareChestCounter).ToString();
             epicChestCounter = PlayerPrefs.GetInt("EpicChestCounter", epicChestCounter);
             epicChestCounterText.text = PlayerPrefs.GetInt("EpicChestCounter", epicChestCounter).ToString();
+            randomValue = Random.Range(0f, 100f);
+            if (randomValue < 4f)
+            {
+                button.GetComponent<Image>().sprite = newChest;
+            }
+            else if (randomValue > 99.5f)
+            {
+                button.GetComponent<Image>().sprite = newChestRare;
+            }
         }
     }
 }
