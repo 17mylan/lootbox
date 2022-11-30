@@ -28,6 +28,9 @@ public class Statistics : MonoBehaviour
     public Sprite nativeChest;
     public Sprite newChest;
     public Sprite newChestRare;
+    public GameObject legendaryBG;
+    public GameObject legendaryParticle;
+    public GameObject goldBG;
     // ___________________________________________
     // |                                          |
     // |              MONOBEHAVIOR                |
@@ -43,6 +46,7 @@ public class Statistics : MonoBehaviour
     // |                                          |
     // |            PUBLIC FONCTION               |
     // |__________________________________________|
+    Vector2 startingPos;
     IEnumerator ButtonScale()
     {
         button.transform.localScale = new Vector3(0.8f,0.8f,0.8f);
@@ -57,14 +61,24 @@ public class Statistics : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Y))
         {
             button.GetComponent<Image>().sprite = nativeChest;
+            legendaryBG.SetActive(false);
+            legendaryParticle.SetActive(false);
+            goldBG.SetActive(false);
+
         }
         if (Input.GetKeyDown(KeyCode.U))
         {
             button.GetComponent<Image>().sprite = newChest;
+            legendaryBG.SetActive(false);
+            legendaryParticle.SetActive(false);
+            goldBG.SetActive(true);
         }
         if (Input.GetKeyDown(KeyCode.I))
         {
             button.GetComponent<Image>().sprite = newChestRare;
+            legendaryBG.SetActive(true);
+            legendaryParticle.SetActive(true);
+            goldBG.SetActive(false);
         }
     }
     public void ButtonClick(string _String)
@@ -85,6 +99,7 @@ public class Statistics : MonoBehaviour
                 allGold = allGold + 10;
                 PlayerPrefs.SetInt("allGold", allGold);
                 particleSysNewChest.Play();
+                goldBG.SetActive(false);
             }
             else if (button.GetComponent<Image>().sprite == newChestRare)
             {
@@ -94,6 +109,8 @@ public class Statistics : MonoBehaviour
                 allGold = allGold + 75;
                 PlayerPrefs.SetInt("allGold", allGold);
                 particleSysNewChestRare.Play();
+                legendaryBG.SetActive(false);
+                legendaryParticle.SetActive(false);
             }
             else
             {
@@ -160,10 +177,13 @@ public class Statistics : MonoBehaviour
             if (randomValue < 4f)
             {
                 button.GetComponent<Image>().sprite = newChest;
+                goldBG.SetActive(true);
             }
             else if (randomValue > 99.5f)
             {
                 button.GetComponent<Image>().sprite = newChestRare;
+                legendaryBG.SetActive(true);
+                legendaryParticle.SetActive(true);
             }
         }
     }
