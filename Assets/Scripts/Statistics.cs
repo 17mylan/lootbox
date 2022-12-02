@@ -31,6 +31,8 @@ public class Statistics : MonoBehaviour
     public GameObject legendaryBG;
     public GameObject legendaryParticle;
     public GameObject goldBG;
+    public AudioSource LegendarySound;
+    public AudioClip legendarySoundClip;
     // ___________________________________________
     // |                                          |
     // |              MONOBEHAVIOR                |
@@ -104,6 +106,7 @@ public class Statistics : MonoBehaviour
             else if (button.GetComponent<Image>().sprite == newChestRare)
             {
                 button.GetComponent<Image>().sprite = nativeChest;
+                LegendarySound.PlayOneShot(legendarySoundClip);
                 gold = gold + 75;
                 allGold = PlayerPrefs.GetInt("allGold", allGold);
                 allGold = allGold + 75;

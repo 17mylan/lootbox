@@ -20,14 +20,15 @@ public class MenuManager : MonoBehaviour
     public Text playername;
     public InputField display;
     Statistics statistics;
-
+    public AudioSource buttonClickSound;
+    public AudioClip sound_buttonClickSound;
     // ___________________________________________
     // |                                          |
     // |              MONOBEHAVIOR                |
     // |__________________________________________|
     public void Start()
     {
-        Scene currentScene = SceneManager.GetActiveScene();
+        Scene currentScene = SceneManager.GetActiveScene(); // string.IsNullOrWhiteSpace(player1Name))
         string sceneName = currentScene.name;
         if (sceneName == "Main")
         {
@@ -115,6 +116,7 @@ public class MenuManager : MonoBehaviour
             Shop.SetActive(false);
             EpicChestPopUp.SetActive(true);
         }
+        buttonClickSound.PlayOneShot(sound_buttonClickSound);
     }
     public void ChangeScene(string _sceneName)
     {
