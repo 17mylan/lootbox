@@ -130,9 +130,9 @@ public class Statistics : MonoBehaviour
         }
         if(_String == "BuyChestCommon")
         {
-            if(PlayerPrefs.GetInt("gold", gold) >= 10)
+            if(PlayerPrefs.GetInt("gold", gold) >= 50)
             {
-                gold = (PlayerPrefs.GetInt("gold", gold)) - 10;
+                gold = (PlayerPrefs.GetInt("gold", gold)) - 50;
                 PlayerPrefs.SetInt("gold", gold);
                 goldScoreText.text = PlayerPrefs.GetInt("gold", gold).ToString();
                 commonChestCounter = PlayerPrefs.GetInt("CommonChestCounter", commonChestCounter) + 1;
@@ -141,9 +141,9 @@ public class Statistics : MonoBehaviour
         }
         if(_String == "BuyChestRare")
         {
-            if(PlayerPrefs.GetInt("gold", gold) >= 50)
+            if(PlayerPrefs.GetInt("gold", gold) >= 250)
             {
-                gold = (PlayerPrefs.GetInt("gold", gold)) - 50;
+                gold = (PlayerPrefs.GetInt("gold", gold)) - 250;
                 PlayerPrefs.SetInt("gold", gold);
                 goldScoreText.text = PlayerPrefs.GetInt("gold", gold).ToString();
                 rareChestCounter = PlayerPrefs.GetInt("RareChestCounter", rareChestCounter) + 1;
@@ -152,9 +152,9 @@ public class Statistics : MonoBehaviour
         }
         if(_String == "BuyChestEpic")
         {
-            if(PlayerPrefs.GetInt("gold", gold) >= 100)
+            if(PlayerPrefs.GetInt("gold", gold) >= 500)
             {
-                gold = (PlayerPrefs.GetInt("gold", gold)) - 100;
+                gold = (PlayerPrefs.GetInt("gold", gold)) - 500;
                 PlayerPrefs.SetInt("gold", gold);
                 goldScoreText.text = PlayerPrefs.GetInt("gold", gold).ToString();
                 epicChestCounter = PlayerPrefs.GetInt("EpicChestCounter", epicChestCounter) + 1;
