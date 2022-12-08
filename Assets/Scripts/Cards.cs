@@ -61,6 +61,14 @@ public class Cards : MonoBehaviour
             }
             SceneManager.LoadScene("Cards");
         }
+        else if (Input.GetKeyDown(KeyCode.K))
+        {
+            for (int i = 1; i < 6; i++)
+            {
+                PlayerPrefs.SetInt("Cards_" + i, 1);
+            }
+            SceneManager.LoadScene("Cards");
+        }
     }
     public void buttonClicked(string _String)
     {
