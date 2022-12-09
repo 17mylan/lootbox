@@ -20,6 +20,8 @@ public class Statistics : MonoBehaviour
     public Text rareChestCounterText;
     public int epicChestCounter;
     public Text epicChestCounterText;
+    public int numberOfCardsUnlocked;
+    public Text numberOfCardsUnlockedText;
     public ParticleSystem particleSys;
     public ParticleSystem particleSysNewChest;
     public ParticleSystem particleSysNewChestRare;
@@ -35,6 +37,7 @@ public class Statistics : MonoBehaviour
     public AudioClip goldSoundClip;
     public AudioSource LegendarySound;
     public AudioClip legendarySoundClip;
+    Cards cards;
     // ___________________________________________
     // |                                          |
     // |              MONOBEHAVIOR                |
@@ -179,6 +182,15 @@ public class Statistics : MonoBehaviour
             rareChestCounterText.text = PlayerPrefs.GetInt("RareChestCounter", rareChestCounter).ToString();
             epicChestCounter = PlayerPrefs.GetInt("EpicChestCounter", epicChestCounter);
             epicChestCounterText.text = PlayerPrefs.GetInt("EpicChestCounter", epicChestCounter).ToString();
+
+            for (int i = 1; i < 11; i++)
+            {
+                if(PlayerPrefs.GetInt("Cards_" + i) == 1)
+                {
+                    numberOfCardsUnlocked++;
+                }
+            }
+            numberOfCardsUnlockedText.text = numberOfCardsUnlocked.ToString();
             randomValue = Random.Range(0f, 100f);
             if (randomValue < 4f)
             {

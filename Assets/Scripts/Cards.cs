@@ -23,6 +23,10 @@ public class Cards : MonoBehaviour
     public GameObject locked;
     public GameObject topSecret;
     public Sprite card_10_blur;
+
+    public Text cardDescriptionText;
+    public GameObject cardDescription;
+
     public void Start()
     {
         for (int i = 1; i < 11; i++)
@@ -79,16 +83,20 @@ public class Cards : MonoBehaviour
                 Remi_OpenCard.SetActive(true);
                 BackgroundCards.SetActive(true);
                 Canvas.SetActive(true);
+                cardDescription.SetActive(true);
+                cardDescriptionText.text = "Card Description\n \nRemi\nRarity: Ultime\n \nMan who loves unity and his students";
             }
         }
         else
         {
             BackgroundCards.SetActive(true);
             Canvas.SetActive(true);
+            cardDescription.SetActive(true);
             if (_String == "CloseOpenCards")
             {
                 BackgroundCards.SetActive(false);
                 Canvas.SetActive(false);
+                cardDescription.SetActive(false);
                 Stive_OpenCard.SetActive(false);
                 PrLeton_OpenCard.SetActive(false);
                 EthanSummer_OpenCard.SetActive(false);
@@ -103,38 +111,47 @@ public class Cards : MonoBehaviour
             if (_String == "Stive")
             {
                 Stive_OpenCard.SetActive(true);
+                cardDescriptionText.text = "Card Description\n \nStive\nRarity: Commun\n \nStive likes to build his house in inappropriate places";
             }
             if (_String == "PrLeton")
             {
                 PrLeton_OpenCard.SetActive(true);
+                cardDescriptionText.text = "Card Description\n \nPr Leton\nRarity: Commun\n \nProfessor LesThons is known for his many successful investigations";
             }
             if (_String == "EthanSummer")
             {
                 EthanSummer_OpenCard.SetActive(true);
+                cardDescriptionText.text = "Card Description\n \nEthan Summer\nRarity: Commun\n \nEthan summer's hobby is killing zombies";
             }
             if (_String == "Sonic")
             {
                 Sonic_OpenCard.SetActive(true);
+                cardDescriptionText.text = "Card Description\n \nSonic\nRarity: Rare\n \nSo(S)nic loves to run around with his lightning speed";
             }
             if (_String == "Claude")
             {
                 Claude_OpenCard.SetActive(true);
+                cardDescriptionText.text = "Card Description\n \nClaude\nRarity: Rare\n \nClaude, a notorious alcoholic mercenary, likes to hang out in trendy neighbourhoods";
             }
             if (_String == "TomKoon")
             {
                 TomKoon_OpenCard.SetActive(true);
+                cardDescriptionText.text = "Card Description\n \nTom Koon\nRarity: Rare\n \nTom Koon, the world's biggest businessman";
             }
             if (_String == "Pika")
             {
                 Pika_OpenCard.SetActive(true);
+                cardDescriptionText.text = "Card Description\n \nPikachoux\nRarity: Super Rare\n \nPikachoux is an adorable creature who loves everyone";
             }
             if (_String == "Zailda")
             {
                 Zailda_OpenCard.SetActive(true);
+                cardDescriptionText.text = "Card Description\n \nZailda\nRarity: Super Rare\n \nZailda, famous travelling hero in search of his real name";
             }
             if (_String == "Mario")
             {
                 Mario_OpenCard.SetActive(true);
+                cardDescriptionText.text = "Card Description\n \nMario de Metal\nRarity: Super Rare\n \nMan who loves metal, it's his whole life";
             }
         }
     }
