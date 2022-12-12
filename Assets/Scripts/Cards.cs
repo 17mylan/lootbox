@@ -23,7 +23,6 @@ public class Cards : MonoBehaviour
     public GameObject locked;
     public GameObject topSecret;
     public Sprite card_10_blur;
-
     public Text cardDescriptionText;
     public GameObject cardDescription;
 
@@ -49,7 +48,7 @@ public class Cards : MonoBehaviour
     }
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.M))
         {
             for (int i = 1; i < 11; i++)
             {
@@ -57,7 +56,7 @@ public class Cards : MonoBehaviour
             }
             SceneManager.LoadScene("Cards");
         }
-        else if (Input.GetKeyDown(KeyCode.M))
+        else if (Input.GetKeyDown(KeyCode.J))
         {
             for (int i = 1; i < 11; i++)
             {
@@ -68,6 +67,14 @@ public class Cards : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.K))
         {
             for (int i = 1; i < 6; i++)
+            {
+                PlayerPrefs.SetInt("Cards_" + i, 1);
+            }
+            SceneManager.LoadScene("Cards");
+        }
+        else if (Input.GetKeyDown(KeyCode.L))
+        {
+            for (int i = 1; i < 10; i++)
             {
                 PlayerPrefs.SetInt("Cards_" + i, 1);
             }

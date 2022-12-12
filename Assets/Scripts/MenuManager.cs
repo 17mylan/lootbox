@@ -13,6 +13,7 @@ public class MenuManager : MonoBehaviour
     public GameObject Options;
     public GameObject Profile;
     public GameObject Shop;
+    public GameObject ShopUltime;
     public GameObject CommonChestPopUp;
     public GameObject RareChestPopUp;
     public GameObject EpicChestPopUp;
@@ -35,7 +36,6 @@ public class MenuManager : MonoBehaviour
             playername.text = PlayerPrefs.GetString("playername");
         }
     }
-
     // ___________________________________________
     // |                                          |
     // |            PUBLIC FONCTION               |
@@ -59,6 +59,7 @@ public class MenuManager : MonoBehaviour
             if(sceneName == "Shop")
             {
                 Shop.SetActive(false);
+                ShopUltime.SetActive(false);
                 CommonChestPopUp.SetActive(false);
                 RareChestPopUp.SetActive(false);
                 EpicChestPopUp.SetActive(false);
@@ -74,6 +75,22 @@ public class MenuManager : MonoBehaviour
             if(sceneName == "Shop")
             {
                 Shop.SetActive(true);
+                if (PlayerPrefs.GetInt("Cards_10") == 0)
+                {
+                    for (int i = 1; i < 10; i++)
+                    {
+                        if (PlayerPrefs.GetInt("Cards_" + i) == 1)
+                        {
+                            ShopUltime.SetActive(true);
+                            Shop.SetActive(false);
+                        }
+                        else
+                        {
+                            ShopUltime.SetActive(false);
+                            Shop.SetActive(true);
+                        }
+                    }
+                }
             }
             Options.SetActive(false);
         }

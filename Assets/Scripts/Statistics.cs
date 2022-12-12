@@ -37,6 +37,8 @@ public class Statistics : MonoBehaviour
     public AudioClip goldSoundClip;
     public AudioSource LegendarySound;
     public AudioClip legendarySoundClip;
+    public GameObject Shop;
+    public GameObject ShopUltime;
     Cards cards;
     // ___________________________________________
     // |                                          |
@@ -47,8 +49,29 @@ public class Statistics : MonoBehaviour
         goldScoreText.text = PlayerPrefs.GetInt("gold", gold).ToString();
         gold = PlayerPrefs.GetInt("gold", gold);
         CheckStats();
-    }
-
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+        if (sceneName == "Shop")
+        {
+            Shop.SetActive(true);
+            if (PlayerPrefs.GetInt("Cards_10") == 0)
+            {
+                for (int i = 1; i < 10; i++)
+                {
+                    if (PlayerPrefs.GetInt("Cards_" + i) == 1)
+                    {
+                        ShopUltime.SetActive(true);
+                        Shop.SetActive(false);
+                    }
+                    else
+                    {
+                        ShopUltime.SetActive(false);
+                        Shop.SetActive(true);
+                    }
+                }
+            }
+        }
+    }   
     // ___________________________________________
     // |                                          |
     // |            PUBLIC FONCTION               |
@@ -60,27 +83,24 @@ public class Statistics : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         button.transform.localScale = new Vector3(1,1,1);
     }
-
-
     // Cheat code Dev
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Y))
+        if(Input.GetKeyDown(KeyCode.I))
         {
             button.GetComponent<Image>().sprite = nativeChest;
             legendaryBG.SetActive(false);
             legendaryParticle.SetActive(false);
             goldBG.SetActive(false);
-
         }
-        if (Input.GetKeyDown(KeyCode.U))
+        if (Input.GetKeyDown(KeyCode.O))
         {
             button.GetComponent<Image>().sprite = newChest;
             legendaryBG.SetActive(false);
             legendaryParticle.SetActive(false);
             goldBG.SetActive(true);
         }
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             button.GetComponent<Image>().sprite = newChestRare;
             legendaryBG.SetActive(true);
@@ -170,6 +190,17 @@ public class Statistics : MonoBehaviour
                 SceneManager.LoadScene(4);
             }
         }
+        if(_String == "BuyUltimeChest")
+        {
+            if(PlayerPrefs.GetInt("gold", gold) >= 10000)
+            {
+                gold = (PlayerPrefs.GetInt("gold", gold)) - 10000;
+                PlayerPrefs.SetInt("gold", gold);
+                goldScoreText.text = PlayerPrefs.GetInt("gold", gold).ToString();
+                PlayerPrefs.SetInt("Cards_10", 1);
+                SceneManager.LoadScene(6);
+            }
+        }
     }
     public void CheckStats()
     {
@@ -185,7 +216,6 @@ public class Statistics : MonoBehaviour
             rareChestCounterText.text = PlayerPrefs.GetInt("RareChestCounter", rareChestCounter).ToString();
             epicChestCounter = PlayerPrefs.GetInt("EpicChestCounter", epicChestCounter);
             epicChestCounterText.text = PlayerPrefs.GetInt("EpicChestCounter", epicChestCounter).ToString();
-
             for (int i = 1; i < 11; i++)
             {
                 if(PlayerPrefs.GetInt("Cards_" + i) == 1)

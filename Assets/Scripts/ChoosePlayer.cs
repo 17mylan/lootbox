@@ -14,7 +14,7 @@ public class ChoosePlayer : MonoBehaviour
         {
             player1.SetActive(true);
             player2.SetActive(false);
-            
+
         }
         else if (PlayerPrefs.GetInt("Player") == 2)
         {

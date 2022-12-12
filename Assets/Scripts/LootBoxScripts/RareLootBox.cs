@@ -6,14 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class RareLootBox : MonoBehaviour
 {
-
     public GameObject lootBox;
-
     public GameObject Open;
     public GameObject Exit;
-
     public GameObject Particles;
-
     public GameObject Commun1;
     public GameObject Commun2;
     public GameObject Commun3;
@@ -25,24 +21,17 @@ public class RareLootBox : MonoBehaviour
     public GameObject Epic3;
     public GameObject Doublons;
     public Text DoublonsText;
-
     public Statistics statistics;
     public int gold;
-
-
     public Animator animator;
-
     void Start()
     {
         animator = GetComponent<Animator>();
     }
-
-
     public void ParticlesSystem()
     {
         Particles.SetActive(true);
     }
-
     public void DestroyBox()
     {
         lootBox.SetActive(false);
@@ -53,20 +42,16 @@ public class RareLootBox : MonoBehaviour
         {
             animator.SetBool("Idle", false);
             animator.SetBool("Open", true);
-
             Invoke("ParticlesSystem", .6f);
             Invoke("LootSpawnn", .6f);
             Invoke("DestroyBox", 2.0f);
-
             Open.SetActive(false);
             Exit.SetActive(true);
         }
-
         if (_String == "LeaveScene")
         {
             SceneManager.LoadScene("Main");
         }
-        //Invoke("LootSpawnn", 2.0f);
     }
     public void ReturnGold(string _String)
     {
@@ -93,7 +78,6 @@ public class RareLootBox : MonoBehaviour
     {
         float randomNum = Random.Range(0, 100);
         float randomNum2 = Random.Range(1, 4);
-
         if (randomNum <= 60)
         {
             if (randomNum2 == 1)
@@ -132,10 +116,7 @@ public class RareLootBox : MonoBehaviour
                     PlayerPrefs.SetInt("Cards_3", 1);
                 }
             }
-
-            //card1.SetActive(true);
         }
-
         if (randomNum > 60 && randomNum <= 98)
         {
             if (randomNum2 == 1)
@@ -174,10 +155,7 @@ public class RareLootBox : MonoBehaviour
                     PlayerPrefs.SetInt("Cards_6", 1);
                 }
             }
-
-            //card2.SetActive(true);
         }
-
         if (randomNum > 98 && randomNum <= 100)
         {
             if (randomNum2 == 1)
@@ -216,10 +194,7 @@ public class RareLootBox : MonoBehaviour
                     PlayerPrefs.SetInt("Cards_9", 1);
                 }
             }
-
-            //card3.SetActive(true);
         }
-
         Exit.SetActive(true);
     }
 }
