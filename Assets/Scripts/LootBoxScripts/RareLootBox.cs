@@ -37,20 +37,6 @@ public class RareLootBox : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown("e"))
-        {
-            animator.SetBool("Idle", false);
-            animator.SetBool("Open", true);
-
-            Invoke("ParticlesSystem", .5f);
-            Invoke("LootSpawnn", .5f);
-            Invoke("DestroyBox", 2.0f);
-
-        }
-
-    }
 
     public void ParticlesSystem()
     {
