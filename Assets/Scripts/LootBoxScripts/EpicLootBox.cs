@@ -53,7 +53,9 @@ public class EpicLootBox : MonoBehaviour
             animator.SetBool("Idle", false);
             animator.SetBool("Open", true);
 
-            LootSpawnn();
+            Invoke("ParticlesSystem", .6f);
+            Invoke("LootSpawnn", .6f);
+            Invoke("DestroyBox", 2.0f);
 
             Open.SetActive(false);
             Exit.SetActive(true);
