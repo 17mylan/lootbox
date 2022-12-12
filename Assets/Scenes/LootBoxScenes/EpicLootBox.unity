@@ -543,7 +543,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1899172969}
-        m_TargetAssemblyTypeName: RareLootBox, Assembly-CSharp
+        m_TargetAssemblyTypeName: CommunLootBox, Assembly-CSharp
         m_MethodName: buttonClick
         m_Mode: 5
         m_Arguments:
@@ -1231,7 +1231,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1899172969}
-        m_TargetAssemblyTypeName: RareLootBox, Assembly-CSharp
+        m_TargetAssemblyTypeName: CommunLootBox, Assembly-CSharp
         m_MethodName: buttonClick
         m_Mode: 5
         m_Arguments:
@@ -1612,7 +1612,7 @@ Animator:
   m_GameObject: {fileID: 1899172965}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1473a04d55d31ec41946411a3180339f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7c20316202f0996459b982090d542037, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1663,7 +1663,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 656961333, guid: e1a268fad77b13b4cb0d4359f586704e, type: 3}
+  m_Sprite: {fileID: -1928255264, guid: e1a268fad77b13b4cb0d4359f586704e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1698,7 +1698,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1899172965}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b222eff2cfc99b24cb4e56656aec35c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 022707c4bc30282479cea72270727eff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lootBox: {fileID: 1899172965}
