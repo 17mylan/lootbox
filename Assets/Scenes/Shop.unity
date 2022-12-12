@@ -1807,6 +1807,8 @@ MonoBehaviour:
   rareChestCounterText: {fileID: 0}
   epicChestCounter: 0
   epicChestCounterText: {fileID: 0}
+  numberOfCardsUnlocked: 0
+  numberOfCardsUnlockedText: {fileID: 0}
   particleSys: {fileID: 0}
   particleSysNewChest: {fileID: 0}
   particleSysNewChestRare: {fileID: 0}
@@ -1818,6 +1820,8 @@ MonoBehaviour:
   legendaryBG: {fileID: 0}
   legendaryParticle: {fileID: 0}
   goldBG: {fileID: 0}
+  goldSound: {fileID: 0}
+  goldSoundClip: {fileID: 0}
   LegendarySound: {fileID: 0}
   legendarySoundClip: {fileID: 0}
 --- !u!82 &581695678

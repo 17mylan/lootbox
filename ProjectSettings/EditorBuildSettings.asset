@@ -14,4 +14,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cards.unity
     guid: 181e97febcbde70429ab6493480e7aa4
+  - enabled: 1
+    path: Assets/Scenes/LootBoxScenes/CommunLootBox.unity
+    guid: 70145918b62cf314d9dc02ae476901fd
+  - enabled: 1
+    path: Assets/Scenes/LootBoxScenes/EpicLootBox.unity
+    guid: a0514861f74e58d4a84aaa56a400e061
+  - enabled: 1
+    path: Assets/Scenes/LootBoxScenes/RareLootBox.unity
+    guid: 8b098aea0bc2e1143975674e4843868e
+  - enabled: 1
+    path: Assets/Scenes/LootBoxScenes/UltimateLootBox.unity
+    guid: 575fcfadcbe77694a83df97bd2af4cce
   m_configObjects: {}

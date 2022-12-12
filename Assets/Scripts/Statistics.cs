@@ -143,6 +143,7 @@ public class Statistics : MonoBehaviour
                 goldScoreText.text = PlayerPrefs.GetInt("gold", gold).ToString();
                 commonChestCounter = PlayerPrefs.GetInt("CommonChestCounter", commonChestCounter) + 1;
                 PlayerPrefs.SetInt("CommonChestCounter", commonChestCounter);
+                SceneManager.LoadScene(3);
             }
         }
         if(_String == "BuyChestRare")
@@ -154,6 +155,7 @@ public class Statistics : MonoBehaviour
                 goldScoreText.text = PlayerPrefs.GetInt("gold", gold).ToString();
                 rareChestCounter = PlayerPrefs.GetInt("RareChestCounter", rareChestCounter) + 1;
                 PlayerPrefs.SetInt("RareChestCounter", rareChestCounter);
+                SceneManager.LoadScene(5);
             }
         }
         if(_String == "BuyChestEpic")
@@ -165,6 +167,7 @@ public class Statistics : MonoBehaviour
                 goldScoreText.text = PlayerPrefs.GetInt("gold", gold).ToString();
                 epicChestCounter = PlayerPrefs.GetInt("EpicChestCounter", epicChestCounter) + 1;
                 PlayerPrefs.SetInt("EpicChestCounter", epicChestCounter);
+                SceneManager.LoadScene(4);
             }
         }
     }
