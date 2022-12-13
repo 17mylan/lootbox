@@ -2,6 +2,8 @@ Famous Card Collection is a 2D game, mixing the popular "Cookie Clicker" game wi
 
 ---- Loot Box Cheat Code ----
 
+Only if you have "Famous Card Collection" Educational Way!
+
 Max Gold:
 
 	Press Options Menu:
