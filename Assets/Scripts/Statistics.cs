@@ -10,6 +10,7 @@ public class Statistics : MonoBehaviour
     // |                                          |
     // |                VARIABLES                 |
     // |__________________________________________|
+    [Header ("Text & Integer")]
     public int gold;
     public Text goldScoreText;
     public int allGold;
@@ -22,11 +23,13 @@ public class Statistics : MonoBehaviour
     public Text epicChestCounterText;
     public int numberOfCardsUnlocked;
     public Text numberOfCardsUnlockedText;
+    public float randomValue;
+    [Header("Particle System")]
     public ParticleSystem particleSys;
     public ParticleSystem particleSysNewChest;
     public ParticleSystem particleSysNewChestRare;
+    [Header("Game Object & Sprites")]
     public GameObject button;
-    public float randomValue;
     public Sprite nativeChest;
     public Sprite newChest;
     public Sprite newChestRare;

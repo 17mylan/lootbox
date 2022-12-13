@@ -10,6 +10,7 @@ public class MenuManager : MonoBehaviour
     // |                                          |
     // |                VARIABLES                 |
     // |__________________________________________|
+    [Header("Game Object")]
     public GameObject Options;
     public GameObject Profile;
     public GameObject Shop;
@@ -18,8 +19,10 @@ public class MenuManager : MonoBehaviour
     public GameObject RareChestPopUp;
     public GameObject EpicChestPopUp;
     public GameObject GoldButton;
+    [Header("Text")]
     public Text playername;
     public InputField display;
+    [Header("Other")]
     Statistics statistics;
     public AudioSource buttonClickSound;
     public AudioClip sound_buttonClickSound;
