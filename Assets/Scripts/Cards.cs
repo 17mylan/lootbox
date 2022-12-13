@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Cards : MonoBehaviour
 {
+    [Header ("Game Object")]
     public GameObject BackgroundCards;
     public GameObject Canvas;
     public GameObject Stive_OpenCard;
@@ -18,13 +19,14 @@ public class Cards : MonoBehaviour
     public GameObject Zailda_OpenCard;
     public GameObject Mario_OpenCard;
     public GameObject Remi_OpenCard;
-    public int NumberOfCards = 10;
-    public Text NumberOfCardsText;
     public GameObject locked;
     public GameObject topSecret;
-    public Sprite card_10_blur;
-    public Text cardDescriptionText;
     public GameObject cardDescription;
+    public Sprite card_10_blur;
+    [Header("Text & Integer")]
+    public Text NumberOfCardsText;
+    public int NumberOfCards = 10;
+    public Text cardDescriptionText;
 
     public void Start()
     {
