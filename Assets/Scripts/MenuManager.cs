@@ -24,6 +24,7 @@ public class MenuManager : MonoBehaviour
     public InputField display;
     [Header("Other")]
     Statistics statistics;
+    Cards cards;
     public AudioSource buttonClickSound;
     public AudioClip sound_buttonClickSound;
     // ___________________________________________
@@ -66,6 +67,11 @@ public class MenuManager : MonoBehaviour
                 CommonChestPopUp.SetActive(false);
                 RareChestPopUp.SetActive(false);
                 EpicChestPopUp.SetActive(false);
+            }
+            if(sceneName == "Cards")
+            {
+                cards = FindObjectOfType<Cards>();
+                cards.CloseAllCards("All");
             }
             Options.SetActive(true);
         }

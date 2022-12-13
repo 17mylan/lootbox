@@ -27,7 +27,7 @@ public class Cards : MonoBehaviour
     public Text NumberOfCardsText;
     public int NumberOfCards = 10;
     public Text cardDescriptionText;
-
+    MenuManager menuManager;
     public void Start()
     {
         for (int i = 1; i < 11; i++)
@@ -85,10 +85,13 @@ public class Cards : MonoBehaviour
     }
     public void buttonClicked(string _String)
     {
+        menuManager = FindObjectOfType<MenuManager>();
+        menuManager.Options.SetActive(false);
         if (_String == "Remi")
         {
             if (PlayerPrefs.GetInt("Cards_10") == 1)
             {
+                CloseAllCards("");
                 Remi_OpenCard.SetActive(true);
                 BackgroundCards.SetActive(true);
                 Canvas.SetActive(true);
@@ -103,65 +106,81 @@ public class Cards : MonoBehaviour
             cardDescription.SetActive(true);
             if (_String == "CloseOpenCards")
             {
-                BackgroundCards.SetActive(false);
-                Canvas.SetActive(false);
-                cardDescription.SetActive(false);
-                Stive_OpenCard.SetActive(false);
-                PrLeton_OpenCard.SetActive(false);
-                EthanSummer_OpenCard.SetActive(false);
-                Sonic_OpenCard.SetActive(false);
-                Claude_OpenCard.SetActive(false);
-                TomKoon_OpenCard.SetActive(false);
-                Pika_OpenCard.SetActive(false);
-                Zailda_OpenCard.SetActive(false);
-                Mario_OpenCard.SetActive(false);
-                Remi_OpenCard.SetActive(false);
+                CloseAllCards("All");
             }
             if (_String == "Stive")
             {
+                CloseAllCards("");
                 Stive_OpenCard.SetActive(true);
                 cardDescriptionText.text = "Card Description\n \nStive\nRarity: Commun\n \nStive likes to build his house in inappropriate places";
             }
             if (_String == "PrLeton")
             {
+                CloseAllCards("");
                 PrLeton_OpenCard.SetActive(true);
                 cardDescriptionText.text = "Card Description\n \nPr Leton\nRarity: Commun\n \nProfessor LesThons is known for his many successful investigations";
             }
             if (_String == "EthanSummer")
             {
+                CloseAllCards("");
                 EthanSummer_OpenCard.SetActive(true);
                 cardDescriptionText.text = "Card Description\n \nEthan Summer\nRarity: Commun\n \nEthan summer's hobby is killing zombies";
             }
             if (_String == "Sonic")
             {
+                CloseAllCards("");
                 Sonic_OpenCard.SetActive(true);
                 cardDescriptionText.text = "Card Description\n \nSonic\nRarity: Rare\n \nSo(S)nic loves to run around with his lightning speed";
             }
             if (_String == "Claude")
             {
+                CloseAllCards("");
                 Claude_OpenCard.SetActive(true);
                 cardDescriptionText.text = "Card Description\n \nClaude\nRarity: Rare\n \nClaude, a notorious alcoholic mercenary, likes to hang out in trendy neighbourhoods";
             }
             if (_String == "TomKoon")
             {
+                CloseAllCards("");
                 TomKoon_OpenCard.SetActive(true);
                 cardDescriptionText.text = "Card Description\n \nTom Koon\nRarity: Rare\n \nTom Koon, the world's biggest businessman";
             }
             if (_String == "Pika")
             {
+                CloseAllCards("");
                 Pika_OpenCard.SetActive(true);
                 cardDescriptionText.text = "Card Description\n \nPikachoux\nRarity: Super Rare\n \nPikachoux is an adorable creature who loves everyone";
             }
             if (_String == "Zailda")
             {
+                CloseAllCards("");
                 Zailda_OpenCard.SetActive(true);
                 cardDescriptionText.text = "Card Description\n \nZailda\nRarity: Super Rare\n \nZailda, famous travelling hero in search of his real name";
             }
             if (_String == "Mario")
             {
+                CloseAllCards("");
                 Mario_OpenCard.SetActive(true);
                 cardDescriptionText.text = "Card Description\n \nMario de Metal\nRarity: Super Rare\n \nMan who loves metal, it's his whole life";
             }
         }
+    }
+    public void CloseAllCards(string _String)
+    {
+        if(_String == "All")
+        {
+            BackgroundCards.SetActive(false);
+            Canvas.SetActive(false);
+            cardDescription.SetActive(false);
+        }
+        Stive_OpenCard.SetActive(false);
+        PrLeton_OpenCard.SetActive(false);
+        EthanSummer_OpenCard.SetActive(false);
+        Sonic_OpenCard.SetActive(false);
+        Claude_OpenCard.SetActive(false);
+        TomKoon_OpenCard.SetActive(false);
+        Pika_OpenCard.SetActive(false);
+        Zailda_OpenCard.SetActive(false);
+        Mario_OpenCard.SetActive(false);
+        Remi_OpenCard.SetActive(false);
     }
 }
