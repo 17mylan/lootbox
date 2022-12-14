@@ -24,6 +24,7 @@ public class Statistics : MonoBehaviour
     public int numberOfCardsUnlocked;
     public Text numberOfCardsUnlockedText;
     public float randomValue;
+    float timePassed = 0f;
     [Header("Particle System")]
     public ParticleSystem particleSys;
     public ParticleSystem particleSysNewChest;
@@ -41,8 +42,13 @@ public class Statistics : MonoBehaviour
     public AudioSource LegendarySound;
     public AudioClip legendarySoundClip;
     public GameObject Shop;
+    public GameObject ShopPage2;
     public GameObject ShopUltime;
+    public GameObject autoClickerButtonTrue;
+    public GameObject autoClickerButtonFalse;
+    public GameObject autoClickerText;
     Cards cards;
+    public bool AutoClickerStatus = true;
     // ___________________________________________
     // |                                          |
     // |              MONOBEHAVIOR                |
@@ -74,45 +80,113 @@ public class Statistics : MonoBehaviour
                 }
             }
         }
+        if(sceneName == "Main")
+        {
+            if(PlayerPrefs.GetInt("AutoClicker") == 1)
+            {
+                autoClickerText.SetActive(true);
+                if(AutoClickerStatus == true)
+                {
+                    autoClickerButtonTrue.SetActive(true);
+                    autoClickerButtonFalse.SetActive(false);
+                }
+                else if(AutoClickerStatus == false)
+                {
+                    autoClickerButtonTrue.SetActive(false);
+                    autoClickerButtonFalse.SetActive(true);
+                }
+            }
+            else if (PlayerPrefs.GetInt("AutoClicker") == 0)
+            {
+                autoClickerText.SetActive(false);
+                autoClickerButtonTrue.SetActive(false);
+                autoClickerButtonFalse.SetActive(false);
+            }
+        }
     }   
     // ___________________________________________
     // |                                          |
     // |            PUBLIC FONCTION               |
     // |__________________________________________|
-    Vector2 startingPos;
     IEnumerator ButtonScale()
     {
         button.transform.localScale = new Vector3(0.8f,0.8f,0.8f);
         yield return new WaitForSeconds(0.1f);
         button.transform.localScale = new Vector3(1,1,1);
     }
+
     // Cheat code Dev
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.I))
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+        if (sceneName == "Main")
         {
-            button.GetComponent<Image>().sprite = nativeChest;
-            legendaryBG.SetActive(false);
-            legendaryParticle.SetActive(false);
-            goldBG.SetActive(false);
-        }
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            button.GetComponent<Image>().sprite = newChest;
-            legendaryBG.SetActive(false);
-            legendaryParticle.SetActive(false);
-            goldBG.SetActive(true);
-        }
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            button.GetComponent<Image>().sprite = newChestRare;
-            legendaryBG.SetActive(true);
-            legendaryParticle.SetActive(true);
-            goldBG.SetActive(false);
+            if(PlayerPrefs.GetInt("AutoClicker") == 1)
+            {
+                if(AutoClickerStatus == true)
+                {
+                    timePassed += Time.deltaTime;
+                    if(timePassed > 1.6f)
+                    {
+                        timePassed = 0f;
+                        button.GetComponent<Button>().onClick.Invoke();
+                    }
+                }
+            }
+            if(Input.GetKeyDown(KeyCode.I))
+            {
+                button.GetComponent<Image>().sprite = nativeChest;
+                legendaryBG.SetActive(false);
+                legendaryParticle.SetActive(false);
+                goldBG.SetActive(false);
+            }
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                button.GetComponent<Image>().sprite = newChest;
+                legendaryBG.SetActive(false);
+                legendaryParticle.SetActive(false);
+                goldBG.SetActive(true);
+            }
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                button.GetComponent<Image>().sprite = newChestRare;
+                legendaryBG.SetActive(true);
+                legendaryParticle.SetActive(true);
+                goldBG.SetActive(false);
+            }
+            if(Input.GetKeyDown(KeyCode.N))
+            {
+                PlayerPrefs.SetInt("AutoClicker", 0);
+                AutoClickerStatus = false;
+            }
         }
     }
     public void ButtonClick(string _String)
     {
+        if (_String == "ShopPage1")
+        {
+            Shop.SetActive(true);
+            ShopPage2.SetActive(false);
+        }
+        if (_String == "ShopPage2")
+        {
+            Shop.SetActive(false);
+            ShopPage2.SetActive(true);
+        }
+        if(_String == "BuyAutoClicker")
+        {
+            if (PlayerPrefs.GetInt("AutoClicker") == 0)
+            {
+                if (PlayerPrefs.GetInt("gold", gold) >= 10000)
+                {
+                    gold = (PlayerPrefs.GetInt("gold", gold)) - 10000;
+                    PlayerPrefs.SetInt("gold", gold);
+                    goldScoreText.text = PlayerPrefs.GetInt("gold", gold).ToString();
+                    PlayerPrefs.SetInt("AutoClicker", 1);
+                }
+            }
+        }
         if(_String == "MaxGold")
         {
             gold = 9999;
@@ -240,5 +314,17 @@ public class Statistics : MonoBehaviour
                 legendaryParticle.SetActive(true);
             }
         }
+    }
+    public void AutoClickerOn()
+    {
+        AutoClickerStatus = true;
+        autoClickerButtonTrue.SetActive(true);
+        autoClickerButtonFalse.SetActive(false);
+    }    
+    public void AutoClickerOff()
+    {
+        AutoClickerStatus = false;
+        autoClickerButtonTrue.SetActive(false);
+        autoClickerButtonFalse.SetActive(true);
     }
 }

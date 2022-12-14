@@ -14,6 +14,7 @@ public class MenuManager : MonoBehaviour
     public GameObject Options;
     public GameObject Profile;
     public GameObject Shop;
+    public GameObject ShopPage2;
     public GameObject ShopUltime;
     public GameObject CommonChestPopUp;
     public GameObject RareChestPopUp;
@@ -63,6 +64,7 @@ public class MenuManager : MonoBehaviour
             if(sceneName == "Shop")
             {
                 Shop.SetActive(false);
+                ShopPage2.SetActive(false);
                 ShopUltime.SetActive(false);
                 CommonChestPopUp.SetActive(false);
                 RareChestPopUp.SetActive(false);
